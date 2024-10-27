@@ -28,7 +28,6 @@ const Home = () => {
     const ordenes = [...orders, item];
     setOrders(ordenes);
     let sum = ordenes.reduce((acc, item) => acc + item.total, 0);
-    console.log("🚀 ~ addItemToOrder ~ ordenes:", ordenes)
     setSuma(sum);
   }
 
@@ -50,6 +49,10 @@ const Home = () => {
     }
     resetOrder();
   }
+
+  const detailOrder = () => {
+    console.log(orders)
+  }
   
   return (
     <>
@@ -60,7 +63,7 @@ const Home = () => {
         <div>
           { 
             suma > 0 && 
-            <MenuTotal total={suma} cantidad={orders.length} reset={resetOrder} add={addNewOrder} />
+            <MenuTotal total={suma} cantidad={orders.length} reset={resetOrder} add={addNewOrder} detail={detailOrder} />
           }
         </div>
         {/* <div>

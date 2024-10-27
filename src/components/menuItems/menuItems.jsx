@@ -7,8 +7,8 @@ const [list, setList] = useState(listItems)
 
   return (
     <div className="p-4 max-w-md mx-auto min-w-96">
-      {list.map((item) => (
-        <div key={item.id} className="mb-4 shadow-sm border-2 border-purple-600 rounded-md">
+      {list.map((item, index) => (
+        <div key={index} className="mb-4 shadow-sm border-2 border-purple-600 rounded-md">
           <div className="p-4">
             <div className="flex justify-between items-start">
               <div>

@@ -9,7 +9,7 @@ const CardDrink = ({list, addItem}) => {
                     onClick={()=>addItem(item)}
                     class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div className='max-h-40 w-full'>
-                        <img class="h-40 w-full rounded-sm" src="https://png.pngtree.com/png-clipart/20190614/original/pngtree-meb-style-lemon-juice-lemon-slices-fruit-juice-creative-png-image_3814511.jpg" alt="product image" />
+                        <img class="h-40 w-full rounded-sm" src={item.image} alt="product image" />
                     </div>
                     <div class="px-1 pb-5">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item.label}</h5>
