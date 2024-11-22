@@ -6,8 +6,11 @@ import { listItems } from '../../helpers/MenuItems';
 import CardDrink from '../../components/cardContainer/cardDrink';
 import MenuTotal from '../../components/menuTotal/menuTotal';
 import CardOrders from '../../components/cardContainer/cardOrders';
+import useStore from '../../stores/store';
 
-const Home = () => {
+export const Home = () => {
+
+  const { addOrder, removeOrder, updateOrder } = useStore();
   
   const [orders, setOrders] = useState([
     // { id: 1, date: "31-10-2023", products: 2, total: 100.00, image: "/placeholder.svg?height=40&width=40" },
@@ -15,6 +18,20 @@ const Home = () => {
     // { id: 3, date: "27-10-2023", products: 1, total: 50.00, image: "/placeholder.svg?height=40&width=40" },
     // { id: 4, date: "23-10-2023", products: 3, total: 20.00, image: "https://png.pngtree.com/png-clipart/20190614/original/pngtree-meb-style-lemon-juice-lemon-slices-fruit-juice-creative-png-image_3814511.jpg" },
   ])
+
+  const handleAddOrder = () => {
+    const newOrder = { id: Date.now(), item: 'New Item', quantity: 1 };
+    addOrder(newOrder);
+  };
+
+  // const handleRemoveOrder = (orderId) => {
+  //   removeOrder(orderId);
+  // };
+
+  // const handleUpdateOrder = (orderId) => {
+  //   const updatedOrder = { id: orderId, item: 'Updated Item', quantity: 2 };
+  //   updateOrder(updatedOrder);
+  // };
 
   const [orderList, setOrderList] = useState([])
 
@@ -38,16 +55,19 @@ const Home = () => {
 
   const addNewOrder = () => {
     if(orders.length) {
+      const date = new Date();
       const order = {
-        date: '2024-10-10',
+        date: date,
         total: suma,
         orders: orders
       }
       const newOrder = [...orderList, order]
       setOrderList(newOrder)
       console.log("🚀 ~ addNewOrder ~ newOrder:", newOrder)
+      addOrder(order);
     }
     resetOrder();
+    
   }
 
   const detailOrder = () => {
@@ -87,5 +107,3 @@ const Home = () => {
     </>
   )
 }
-
-export default Home
