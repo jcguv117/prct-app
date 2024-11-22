@@ -8,7 +8,7 @@ export const MenuPage = () => {
 
   const { addOrder, removeOrder, standByOrder, standBy, cleanStandByOrder } = useOrderStore();
   
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState(standBy.orders?.length ? standBy.orders : [])
 
   const [orderList, setOrderList] = useState([])
 

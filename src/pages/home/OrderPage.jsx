@@ -32,7 +32,7 @@ export const OrderPage = () => {
             <div className="p-2 flex justify-between">
               <button id="btn-detail" className="bg-transparent border-2 border-slate-400">Ver</button>
               <button id="btn-delete" className="bg-transparent border-2 border-red-400" onClick={() => cancelOrder(order.id)}>Cancelar</button>
-              <button id="btn-update" className="bg-transparent border-2 border-blue-400"onClick={() => editOrder(order.id)}>Editar</button>
+              <button id="btn-update" className="bg-transparent border-2 border-blue-400"onClick={() => editOrder(order)}>Editar</button>
               <button id="btn-success" className="bg-transparent border-2 border-green-400" onClick={() => successOrder(order.id)}>Terminar</button>
             </div>
           </div>

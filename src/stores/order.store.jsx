@@ -42,16 +42,18 @@ export const useOrderStore = create()(
         )
       })),
 
-      editOrder: (orderId) => {
+      editOrder: (props) => {
         window.location.href = '/menu';
-        // set(state => ({
-        //   orders: [...state.orders, order]
-        // }))
+        const {total, orders, id} = props;
+        set(state => ({
+          standBy: {...state.standBy, total, orders, id}
+        }))
       },
 
       standByOrder: (props) => {
+        const {total, orders} = props;
         set(state => ({
-          standBy: {...state.standBy, props}
+          standBy: {...state.standBy, total, orders}
         }))
       },
       cleanStandByOrder: () => {
