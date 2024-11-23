@@ -1,10 +1,11 @@
 import Router from 'preact-router';
-import { MenuPage, OrderPage } from '../pages';
+import { HomePage, MenuPage, OrderPage } from '../pages';
 
 export const AppRouter = () => {
   return (
     <Router>
       <MenuPage path="/" />
+      <HomePage path="/home" />
       <MenuPage path="/menu" />
       <OrderPage path="/ordenes" />
     </Router>

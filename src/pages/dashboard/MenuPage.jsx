@@ -40,7 +40,6 @@ export const MenuPage = () => {
       addOrder(order);
     }
     resetOrder();
-    
   }
 
   const detailOrder = () => {

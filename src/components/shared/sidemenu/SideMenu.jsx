@@ -5,6 +5,7 @@ import { SideMenuItem } from './SideMenuItem';
 
 
 const menuItems = [
+  { title: 'Inicio', subTitle: 'Información general', href: '/home', icon: null },
   { title: 'Menu', subTitle: 'Menu de hoy', href: '/menu', icon: null },
   { title: 'Ordenes', subTitle: 'Ordenes activas', href: '/ordenes', icon: null },
 ];

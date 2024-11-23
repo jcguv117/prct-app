@@ -6,13 +6,23 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const useOrderStore = create()(
   persist(
-    (set) => ({
+    (set, get) => ({
       total: 10,
       orders: [],
       standBy: {
         total: 0,
         orders: [],
-      }, 
+      },
+
+      totalSales: () => {
+        const orders = get().orders;
+        return orders.reduce((sum, order) => {
+          if (order.status === 'success') {
+            return sum + order.total;
+          }
+          return sum;
+        }, 0);
+      },
 
       // Función para agregar una orden
       addOrder: (order) => {
@@ -25,7 +35,6 @@ export const useOrderStore = create()(
         }))
       },
 
-      // Función para eliminar una orden por id 
       removeOrder: (orderId) => set(state => ({
         orders: state.orders.filter(order => order.id !== orderId)
       })),
@@ -56,18 +65,20 @@ export const useOrderStore = create()(
           standBy: {...state.standBy, total, orders}
         }))
       },
+
       cleanStandByOrder: () => {
         set(() => ({
           standBy: { total: 0, orders: [] }
         }))
       },
 
-      // Función para actualizar una orden por id
       updateOrder: (updatedOrder) => set(state => ({
         orders: state.orders.map(order => 
           order.id === updatedOrder.id ? updatedOrder : order
         )
       }))
+
+      
 
     }),
     {
