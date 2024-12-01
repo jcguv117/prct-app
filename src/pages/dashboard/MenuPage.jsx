@@ -3,8 +3,9 @@ import { useState } from 'preact/hooks';
 import { listItems } from '../../helpers/MenuItems';
 import CardDrink from '../../components/cardContainer/cardDrink';
 import { useOrderStore } from '../../stores/order.store';
-import { IoTrashSharp, IoRemoveCircleSharp, IoNewspaperSharp, IoBanSharp, IoCheckmarkCircle   } from "react-icons/io5";
+import { IoTrashSharp, IoRemoveCircleSharp, IoNewspaperSharp, IoBanSharp, IoCheckmarkCircle, IoFastFood, IoBeer   } from "react-icons/io5";
 import { MenuCard } from '../../components/shared/card/MenuCard';
+import { FiSearch } from 'react-icons/fi';
 
 export const MenuPage = () => {
 
@@ -51,8 +52,87 @@ export const MenuPage = () => {
   return (
     <>
       <div className="w-full grid" style={{gridTemplateColumns: '70% 30%'}}>
-        <div className='flex flex-wrap justify-center'>
+        <div className='flex flex-col flex-wrap justify-center'>
           {/* <CardDrink list={listItems} addItem={addItemToOrder} /> */}
+          {/* filters */}
+          <div className='flex flex-row justify-between'>
+              <div>
+                  <div class="relative w-80">
+                    <input
+                      value=""
+                      placeholder="Search now..."
+                      class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-slate-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
+                      id="floating_outlined"
+                      type="text"
+                    />
+                    <label
+                      class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white data-[disabled]:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      for="floating_outlined"
+                    >
+                      <span class="font-bold">Search a thing...</span>
+                    </label>
+                    <div class="absolute top-3 right-3">
+                      <FiSearch className='size-6 stroke-gray-500' />
+                    </div>
+                  </div>
+              </div>
+              <div>
+              <div class="flex gap-2 p-2">
+  <div>
+    <input
+      class="peer sr-only"
+      value="male"
+      name="gender"
+      id="male"
+      type="radio"
+    />
+    <div
+      class="flex h-16 w-24 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 p-1 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
+    >
+      <label
+        class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
+        for="male"
+      >
+        <IoBeer />
+        Bebidas
+      </label>
+    </div>
+  </div>
+  <div>
+    <input
+      class="peer sr-only"
+      value="female"
+      name="gender"
+      id="female"
+      type="radio"
+    />
+    <div
+      class="flex h-16 w-24 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 p-1 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
+    >
+      <label
+        class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
+        for="female"
+      >
+        <IoFastFood />
+        Comida
+      </label>
+    </div>
+  </div>
+</div>
+              </div>
+              <div>
+              <select
+                  className="bg-white px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Ordenar..."
+                  value={''}
+                  // onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option value="name">Sort by Name</option>
+                  <option value="price">Sort by Price</option>
+                  <option value="popularity">Sort by Popularity</option>
+                </select>
+              </div>
+          </div>
           <MenuCard menuItems={listItems} />
         </div>
         <div className=''>
