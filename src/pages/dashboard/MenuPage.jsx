@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { listItems } from '../../helpers/MenuItems';
 import CardDrink from '../../components/cardContainer/cardDrink';
 import { useOrderStore } from '../../stores/order.store';
-import { IoTrashSharp, IoRemoveCircleSharp, IoNewspaperSharp, IoBanSharp, IoCheckmarkCircle, IoFastFood, IoBeer   } from "react-icons/io5";
+import { IoTrashSharp, IoRemoveCircleSharp, IoNewspaperSharp, IoBanSharp, IoCheckmarkCircle, IoFastFood, IoWineSharp   } from "react-icons/io5";
 import { MenuCard } from '../../components/shared/card/MenuCard';
 import { FiSearch } from 'react-icons/fi';
 
@@ -20,7 +20,7 @@ export const MenuPage = () => {
   const addItemToOrder = (item) => {
     const ordenes = [...orders, item];
     setOrders(ordenes);
-    let sum = ordenes.reduce((acc, item) => acc + item.total, 0);
+    let sum = ordenes.reduce((acc, item) => acc + item?.total || 0, 0);
     setSuma(sum);
     standByOrder({total:sum, orders: ordenes});
   }
@@ -78,47 +78,47 @@ export const MenuPage = () => {
               </div>
               <div>
               <div class="flex gap-2 p-2">
-  <div>
-    <input
-      class="peer sr-only"
-      value="male"
-      name="gender"
-      id="male"
-      type="radio"
-    />
-    <div
-      class="flex h-16 w-24 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 p-1 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
-    >
-      <label
-        class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
-        for="male"
-      >
-        <IoBeer />
-        Bebidas
-      </label>
-    </div>
-  </div>
-  <div>
-    <input
-      class="peer sr-only"
-      value="female"
-      name="gender"
-      id="female"
-      type="radio"
-    />
-    <div
-      class="flex h-16 w-24 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 p-1 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
-    >
-      <label
-        class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
-        for="female"
-      >
-        <IoFastFood />
-        Comida
-      </label>
-    </div>
-  </div>
-</div>
+                  <div>
+                      <input
+                        class="peer sr-only h-full w-full"
+                        value="drink"
+                        name="filter"
+                        id="drink"
+                        type="radio"
+                      />
+                      <div
+                        class="flex px-4 py-2 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
+                      >
+                        <label
+                          class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
+                          for="drink"
+                        >
+                          <IoWineSharp />
+                          Bebidas
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <input
+                        class="peer sr-only"
+                        value="food"
+                        name="filter"
+                        id="food"
+                        type="radio"
+                      />
+                      <div
+                        class="flex px-4 py-2 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-gray-300 bg-gray-50 transition-transform duration-150 hover:border-blue-400 active:scale-95 peer-checked:border-blue-500 peer-checked:shadow-md peer-checked:shadow-blue-400"
+                      >
+                        <label
+                          class="flex cursor-pointer items-center justify-center text-sm uppercase text-gray-500 peer-checked:text-blue-500"
+                          for="food"
+                        >
+                          <IoFastFood />
+                          Comida
+                        </label>
+                      </div>
+                    </div>
+                  </div>
               </div>
               <div>
               <select
@@ -133,7 +133,7 @@ export const MenuPage = () => {
                 </select>
               </div>
           </div>
-          <MenuCard menuItems={listItems} />
+          <MenuCard menuItems={listItems} addItem={addItemToOrder} />
         </div>
         <div className=''>
           { 

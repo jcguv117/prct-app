@@ -1,13 +1,14 @@
 // import type { IconType } from 'react-icons';
 // import { IoSpeedometerOutline, IoPawOutline, IoLogOutOutline, IoHeartOutline, IoListOutline, IoAccessibilityOutline } from 'react-icons/io5';
+import { IoFileTrayFullSharp, IoHomeSharp, IoNewspaperSharp } from 'react-icons/io5';
 import './SideMenu.css';
 import { SideMenuItem } from './SideMenuItem';
 
 
 const menuItems = [
-  { title: 'Inicio', subTitle: 'Información general', href: '/home', icon: null },
-  { title: 'Menu', subTitle: 'Menu de hoy', href: '/menu', icon: null },
-  { title: 'Ordenes', subTitle: 'Ordenes activas', href: '/ordenes', icon: null },
+  { title: 'Inicio', subTitle: 'Información general', href: '/home', Icon: IoHomeSharp },
+  { title: 'Menus', subTitle: 'Alta de Ordenes', href: '/menu', Icon: IoNewspaperSharp },
+  { title: 'Ordenes', subTitle: 'Control de Ordenes', href: '/ordenes', Icon: IoFileTrayFullSharp  },
 ];
 
 
